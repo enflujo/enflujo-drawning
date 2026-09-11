@@ -1,0 +1,60 @@
+name: 🚀 Despliegue
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  despliegue:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🐯 Obtener código del repositorio
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: 🐜 Activar Corepack
+        run: corepack enable
+
+      - name: 🐝 Usar Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'yarn'
+
+      - name: 🦒 Instalar dependencias
+        run: |
+          yarn install --immutable
+
+      - name: 🏗️ Compilar proyecto
+        env:
+          SITIO_URL: https://drawning.enflujo.com
+          BASE_SITIO: /
+        run: yarn build
+
+      - name: ⚙️ Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: 📦 Subir artefacto para Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./publico
+
+      - name: 🚀 Desplegar a GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
