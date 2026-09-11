@@ -181,22 +181,6 @@ em {
 .palabra {
   display: block;
 }
-.vocal {
-  display: inline-block;
-  position: relative;
-  width: 0.41em;
-}
-.vocal-a,
-.vocal-o {
-  display: inline-block;
-  transition: opacity 1.8s ease;
-}
-.vocal-o {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
 .intermedio {
   display: inline-flex;
   align-items: baseline;
@@ -217,10 +201,6 @@ em {
   width: 0.33em;
   text-align: center;
 }
-.punto {
-  font-style: italic;
-  margin-left: 0.045em;
-}
 .con-deriva .nombre {
   position: fixed;
   left: 0;
@@ -230,14 +210,7 @@ em {
   transform-origin: center;
   will-change: transform;
 }
-.otra-vocal .vocal-a {
-  opacity: 0;
-}
-.otra-vocal .vocal-o {
-  opacity: 1;
-}
-.nombre[data-variante='tachado'] .signo,
-.nombre[data-variante='abierto'] .signo {
+.nombre[data-variante='tachado'] .signo {
   opacity: 0;
 }
 .signo {
@@ -494,19 +467,6 @@ figcaption {
   pointer-events: none;
   z-index: 8;
   font: 0.75rem/1.4 var(--fuente-nota);
-}
-.herramientas button {
-  cursor: pointer;
-  padding: 10px 12px;
-  margin-left: -12px;
-  font-size: 0.875rem;
-  border: 0;
-  background: var(--papel);
-  pointer-events: auto;
-}
-.herramientas button span {
-  color: var(--rojo);
-  margin-left: 12px;
 }
 .profundidad {
   padding: 8px 0 8px 10px;

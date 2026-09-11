@@ -2,7 +2,6 @@ import './scss/estilos.scss';
 
 const nombre = document.querySelector<HTMLElement>('.nombre')!;
 const cabecera = document.querySelector<HTMLElement>('.cabecera')!;
-const botonMovimiento = document.querySelector<HTMLButtonElement>('#alternar-movimiento')!;
 const herramientas = document.querySelector<HTMLElement>('.herramientas')!;
 const indicador = document.querySelector<HTMLElement>('#valor-profundidad')!;
 const apertura = document.querySelector<HTMLElement>('.apertura')!;
@@ -32,7 +31,7 @@ function medirRecorrido() {
 
   const practica = document.querySelector<HTMLElement>('.practica')!.getBoundingClientRect();
   const historia = document.querySelector<HTMLElement>('.historia')!.getBoundingClientRect();
-  const corredor = historia.left - practica.right - 32;
+  const corredor = historia.left - practica.right - 128;
   const estrecha = pantallaEstrecha.matches;
 
   // En móvil la palabra gira y utiliza el margen reservado, sin cubrir los párrafos.
@@ -77,31 +76,21 @@ function transformarNombre() {
   window.clearTimeout(temporizador);
   if (pausado || document.hidden) return;
 
-  const variantes = ['corchetes', 'parentesis', 'tachado', 'parentesis', 'corchetes', 'abierto'];
+  const variantes = ['corchetes', 'parentesis', 'tachado', 'parentesis'];
   const variante = variantes[paso % variantes.length];
   nombre.dataset.variante = variante;
   apertura.textContent = variante === 'parentesis' ? '(' : '[';
   cierre.textContent = variante === 'parentesis' ? ')' : ']';
-  nombre.classList.toggle('otra-vocal', paso % 6 === 3);
   paso += 1;
   temporizador = window.setTimeout(transformarNombre, 6800);
 }
 
 function aplicarMovimiento() {
   document.body.classList.toggle('con-deriva', !pausado);
-  botonMovimiento.setAttribute('aria-pressed', String(pausado));
-  botonMovimiento.innerHTML = pausado
-    ? 'Resume animation <span aria-hidden="true">↝</span>'
-    : 'Pause animation <span aria-hidden="true">Ⅱ</span>';
   window.clearTimeout(temporizador);
   if (!pausado) temporizador = window.setTimeout(transformarNombre, 4500);
   medirRecorrido();
 }
-
-botonMovimiento.addEventListener('click', () => {
-  pausado = !pausado;
-  aplicarMovimiento();
-});
 
 preferenciaMovimiento.addEventListener('change', (evento) => {
   pausado = evento.matches;
