@@ -1,0 +1,58 @@
+---
+export interface Props {
+  titulo?: string;
+  descripcion?: string;
+  urlCanonica?: string;
+  imagen?: string;
+  tipo?: string;
+  idioma?: string;
+}
+
+const {
+  titulo = 'Draw[n]ing',
+  descripcion = 'Draw[n]ing is an artistic research collective formed by Anna Seiderer, Alexander Schellow and Juan Camilo González. Archives, interfaces, performance and workshops.',
+  urlCanonica = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.href,
+  imagen = '/imagenes/archivo-braunstein.webp',
+  tipo = 'website',
+  idioma = 'en_GB',
+} = Astro.props;
+
+const imagenCompleta = imagen.startsWith('http') ? imagen : Astro.site ? new URL(imagen, Astro.site).toString() : imagen;
+---
+
+<!-- Metadatos globales -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#f4f3ee" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="canonical" href={urlCanonica} />
+
+<!-- Etiquetas meta principales -->
+<title>{titulo}</title>
+<meta name="title" content={titulo} />
+<meta name="description" content={descripcion} />
+<meta name="author" content="Anna Seiderer, Alexander Schellow, Juan Camilo González" />
+<meta
+  name="keywords"
+  content="Draw[n]ing, artistic research, colonial archives, interfaces, performance, Alexander Schellow, Anna Seiderer, Juan Camilo González, EnFlujo, erg Brussels, BOZAR"
+/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={tipo} />
+<meta property="og:locale" content={idioma} />
+<meta property="og:url" content={urlCanonica} />
+<meta property="og:site_name" content="Draw[n]ing" />
+<meta property="og:title" content={titulo} />
+<meta property="og:description" content={descripcion} />
+<meta property="og:image" content={imagenCompleta} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={urlCanonica} />
+<meta property="twitter:title" content={titulo} />
+<meta property="twitter:description" content={descripcion} />
+<meta property="twitter:image" content={imagenCompleta} />
+
+<!-- Precarga de fuentes -->
+<link rel="preload" href="/fuentes/cormorant-regular.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fuentes/cormorant-italica.woff2" as="font" type="font/woff2" crossorigin />

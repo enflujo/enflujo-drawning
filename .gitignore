@@ -8,6 +8,8 @@ lerna-debug.log*
 
 node_modules
 publico
+dist
+.astro
 dist-ssr
 *.local
 

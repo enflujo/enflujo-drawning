@@ -1,0 +1,79 @@
+---
+interface Props {
+  id: string;
+  orden: number;
+  titulo: string;
+  subtitulo: string;
+  resumen: string;
+  etiqueta: string;
+  imagen?: string;
+  altImagen?: string;
+  dimensionesImagen?: {
+    width: number;
+    height: number;
+  };
+  creditoImagen?: string;
+  esTextual?: boolean;
+  iconoTexto?: string;
+}
+
+const {
+  id,
+  orden,
+  titulo,
+  subtitulo,
+  resumen,
+  etiqueta,
+  imagen,
+  altImagen,
+  dimensionesImagen = { width: 1600, height: 900 },
+  creditoImagen,
+  esTextual = false,
+  iconoTexto,
+} = Astro.props;
+
+const numeroFormateado = orden.toString().padStart(2, '0');
+const detalleId = `detalle-${id}`;
+---
+
+<article class={`proyecto ${esTextual ? 'proyecto-textual' : ''}`} id={id}>
+  {
+    esTextual ? (
+      <div class="hoja-proyecto">
+        <span class="numero-imagen" aria-hidden="true">
+          {numeroFormateado}
+        </span>
+        <p set:html={iconoTexto ? iconoTexto.replace(/\n/g, '<br />') : ''} />
+      </div>
+    ) : (
+      <a
+        class={`imagen-proyecto ${id === 'pensar-en-archivos' ? 'secuencia' : ''}`}
+        href={`#${detalleId}`}
+        aria-label={`Read about ${titulo}`}
+      >
+        {imagen && (
+          <img
+            src={imagen}
+            alt={altImagen || titulo}
+            width={dimensionesImagen.width}
+            height={dimensionesImagen.height}
+            loading="lazy"
+          />
+        )}
+        <span class="numero-imagen" aria-hidden="true">
+          {numeroFormateado}
+        </span>
+      </a>
+    )
+  }
+  <p class="rotulo">{etiqueta}</p>
+  <h3>
+    <a href={`#${detalleId}`}>{titulo} <span aria-hidden="true">↗</span></a>
+  </h3>
+  <p>{resumen}</p>
+  <details class="desplegable" id={detalleId}>
+    <summary>{subtitulo}</summary>
+    <slot />
+    {creditoImagen && <p class="credito">Image: {creditoImagen}</p>}
+  </details>
+</article>

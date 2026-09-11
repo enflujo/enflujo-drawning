@@ -1,0 +1,71 @@
+---
+const urlBase = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://drawning.enflujo.com';
+
+const esquema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ResearchProject',
+      '@id': `${urlBase}/#project`,
+      name: 'Draw[n]ing',
+      url: urlBase,
+      description:
+        'Draw[n]ing is an artistic research collective formed by Anna Seiderer, Alexander Schellow and Juan Camilo González. Archives, interfaces, performance and workshops.',
+      founder: [
+        {
+          '@type': 'Person',
+          name: 'Anna Seiderer',
+          jobTitle: 'Researcher & Anthropologist',
+        },
+        {
+          '@type': 'Person',
+          name: 'Alexander Schellow',
+          jobTitle: 'Artist & Researcher',
+        },
+        {
+          '@type': 'Person',
+          name: 'Juan Camilo González',
+          jobTitle: 'Artist, Programmer & Researcher',
+          affiliation: {
+            '@type': 'EducationalOrganization',
+            name: 'Universidad de los Andes',
+            department: 'EnFlujo Laboratory',
+          },
+        },
+      ],
+      sponsor: [
+        {
+          '@type': 'Organization',
+          name: 'EnFlujo Laboratory, Universidad de los Andes',
+          url: 'https://enflujo.com',
+        },
+        {
+          '@type': 'EducationalOrganization',
+          name: 'erg — école de recherche graphique',
+        },
+        {
+          '@type': 'Organization',
+          name: 'Centre for the Less Good Idea, Johannesburg',
+        },
+        {
+          '@type': 'Organization',
+          name: 'PICHA, Lubumbashi',
+        },
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${urlBase}/#website`,
+      url: urlBase,
+      name: 'Draw[n]ing',
+      description: 'Artistic research collective on archives, interfaces and performance.',
+      publisher: {
+        '@id': `${urlBase}/#project`,
+      },
+      inLanguage: 'en-GB',
+    },
+  ],
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(esquema)} />
