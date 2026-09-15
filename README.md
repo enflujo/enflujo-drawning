@@ -20,11 +20,13 @@ La carpeta `publico/` contiene el resultado listo para servir en cualquier aloja
 
 ## Composición y movimiento
 
-- `index.html` contiene todos los textos y proyectos en HTML semántico. Se puede leer y navegar sin JavaScript. Cada sección empareja una voz de la práctica con un momento de la historia.
+- `src/pages/index.astro` contiene la página principal y los textos paralelos. Los proyectos se cargan desde `src/content/proyectos/`. Se puede leer y navegar sin JavaScript.
 - `src/scss/estilos.scss` define papel, tipografía, anotaciones, márgenes y adaptación a pantallas estrechas. En móvil, cada pareja se lee consecutivamente; la historia aparece sangrada.
 - `src/programa.ts` mueve el nombre por el corredor central y cambia su escritura. El progreso se calcula como `scrollY / (scrollHeight - innerHeight)`. `ResizeObserver` y los eventos de los desplegables recalculan el recorrido cuando cambia la longitud de la página.
 - Al inicio, el nombre ocupa la anchura de la página; durante el primer tramo de desplazamiento se contrae. En móvil gira 90 grados hacia el margen reservado. La animación no intercepta rueda, tacto, enlaces ni selección de texto.
-- El botón de pausa devuelve el nombre a su posición original en la cabecera de la página y detiene sus transformaciones. Se respeta `prefers-reduced-motion` desde la carga inicial.
+- Se respeta `prefers-reduced-motion` desde la carga inicial; con esa preferencia el título permanece en su posición original.
+- Debajo del título, la cabecera muestra los tres integrantes en una línea en escritorio y en tres filas en móvil. Los enlaces están centrados por encima del título y permanecen arriba. La cabecera de integrantes se fija debajo de esos enlaces al desplazarse, sin duplicar su contenido. Su altura determina el margen de navegación hacia secciones y el espacio reservado en el recorrido del título.
+- El párrafo `.introduccion` contiene Lorem ipsum provisional para revisar la composición; reemplazarlo por el texto definitivo en `src/pages/index.astro`.
 - Los enlaces a los detalles de proyectos los abren automáticamente. Sin JavaScript, los elementos `details` siguen siendo utilizables.
 
 ## Edición de contenido

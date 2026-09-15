@@ -1,5 +1,6 @@
 const nombre = document.querySelector<HTMLElement>('.nombre');
 const cabecera = document.querySelector<HTMLElement>('.cabecera');
+const navegacion = document.querySelector<HTMLElement>('.navegacion');
 const herramientas = document.querySelector<HTMLElement>('.herramientas');
 const indicador = document.querySelector<HTMLElement>('#valor-profundidad');
 const apertura = document.querySelector<HTMLElement>('.apertura');
@@ -18,6 +19,8 @@ if (nombre && cabecera && apertura && cierre && indicador) {
   let escalaFinal = 1;
   let centroInicial = 0;
   let centroFinal = 0;
+  let centroRecorrido = 0;
+  let inicioCabecera = 0;
   let tramoContraccion = 1;
 
   const limitar = (valor: number, minimo = 0, maximo = 1) => Math.min(maximo, Math.max(minimo, valor));
@@ -40,10 +43,19 @@ if (nombre && cabecera && apertura && cierre && indicador) {
 
     // En móvil la palabra gira y utiliza el margen reservado, sin cubrir los párrafos.
     escalaFinal = estrecha ? Math.min(0.34, 25 / altoNombre) : limitar(corredor / anchoNombre, 0.12, 1);
-    centroInicial = cabecera.offsetHeight + (estrecha ? 38 : 22) + altoNombre / 2;
-    const altoFinal = (estrecha ? anchoNombre : altoNombre) * escalaFinal;
-    centroFinal = Math.max(centroInicial, window.innerHeight - 86 - altoFinal / 2);
     const umbral = document.querySelector<HTMLElement>('.umbral');
+    const separacionNombre = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('--separacion-nombre')
+    );
+    centroInicial = (umbral?.offsetTop ?? 0) + separacionNombre + altoNombre / 2;
+    const altoNavegacion = navegacion?.offsetHeight ?? 0;
+    const altoCabecera = altoNavegacion + cabecera.offsetHeight;
+    inicioCabecera = (umbral?.offsetTop ?? 0) + (umbral?.offsetHeight ?? 0) - altoNavegacion;
+    const altoFinal = (estrecha ? anchoNombre : altoNombre) * escalaFinal;
+    centroRecorrido = Math.max(centroInicial, altoCabecera + altoFinal / 2 + 28);
+    centroFinal = Math.max(centroRecorrido, window.innerHeight - 86 - altoFinal / 2);
+    document.documentElement.style.setProperty('--alto-cabecera', `${altoCabecera}px`);
+    document.documentElement.style.setProperty('--alto-navegacion', `${altoNavegacion}px`);
     tramoContraccion = umbral ? Math.max(180, Math.min(520, umbral.offsetHeight * 0.65)) : 200;
     solicitarFotograma();
   };
@@ -56,6 +68,7 @@ if (nombre && cabecera && apertura && cierre && indicador) {
     indicador.textContent = Math.round(progreso * 100)
       .toString()
       .padStart(3, '0');
+    cabecera?.classList.toggle('cabecera-flotante', desplazamiento >= inicioCabecera);
     if (pausado) return;
 
     const contraccion = limitar(desplazamiento / tramoContraccion);
@@ -64,7 +77,8 @@ if (nombre && cabecera && apertura && cierre && indicador) {
     const estrecha = pantallaEstrecha.matches;
     const centroX = window.innerWidth / 2;
     const posicionX = estrecha ? centroX + (window.innerWidth - 30 - centroX) * transicion : centroX;
-    const posicionY = centroInicial + (centroFinal - centroInicial) * progreso;
+    const posicionY =
+      centroInicial + (centroRecorrido - centroInicial) * transicion + (centroFinal - centroRecorrido) * progreso;
 
     nombre.style.setProperty('--posicion-x', `${posicionX.toFixed(2)}px`);
     nombre.style.setProperty('--posicion-y', `${posicionY.toFixed(2)}px`);

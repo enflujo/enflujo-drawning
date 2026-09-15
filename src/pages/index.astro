@@ -9,14 +9,12 @@ todosProyectos.sort((a, b) => a.data.orden - b.data.orden);
 
 <Principal>
   <a class="saltar" href="#textos">Skip to the texts</a>
-  <header class="cabecera">
-    <a class="identidad" href="#superficie" aria-label="Draw[n]ing, back to top">D<span>[n]</span></a>
-    <p class="integrantes">Anna Seiderer<br />Alexander Schellow<br />Juan Camilo González</p>
-    <nav aria-label="Main navigation">
-      <a href="#textos">Texts</a>
-      <a href="#proyectos">Projects</a>
-    </nav>
-  </header>
+
+  <nav class="navegacion" aria-label="Main navigation">
+    <a href="#superficie">Top</a>
+    <a href="#textos">Texts</a>
+    <a href="#proyectos">Projects</a>
+  </nav>
 
   <main>
     <section class="umbral" aria-labelledby="titulo">
@@ -29,6 +27,21 @@ todosProyectos.sort((a, b) => a.data.orden - b.data.orden);
         >
       </div>
     </section>
+
+    <header class="cabecera">
+      <ul class="integrantes" aria-label="Collective members">
+        <li>Anna Seiderer</li>
+        <li>Alexander Schellow</li>
+        <li>Juan Camilo González</li>
+      </ul>
+
+    </header>
+    <p class="introduccion">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
 
     <div class="lecturas" id="textos">
       <div class="cabecera-lecturas">
@@ -296,291 +309,3 @@ todosProyectos.sort((a, b) => a.data.orden - b.data.orden);
     <span class="profundidad" aria-hidden="true"><span id="valor-profundidad">000</span> / 100</span>
   </div>
 </Principal>
-  <a class="saltar" href="#textos">Skip to the texts</a>
-  <header class="cabecera">
-    <a class="identidad" href="#superficie" aria-label="Draw[n]ing, back to top">D<span>[n]</span></a>
-    <p class="integrantes">Anna Seiderer<br />Alexander Schellow<br />Juan Camilo González</p>
-    <nav aria-label="Main navigation">
-      <a href="#textos">Texts</a>
-      <a href="#proyectos">Projects</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="umbral" aria-labelledby="titulo">
-      <h1 id="titulo" class="solo-lectores">Draw[n]ing</h1>
-      <div class="nombre" aria-hidden="true">
-        <span class="palabra"
-          >Draw<span class="intermedio"
-            ><span class="signo apertura">[</span><span class="ene">n</span><span class="signo cierre">]</span></span
-          >ing</span
-        >
-      </div>
-    </section>
-
-    <div class="lecturas" id="textos">
-      <div class="cabecera-lecturas">
-        <h2><span class="indice">I</span> What we do</h2>
-        <h2><span class="indice">II</span> Project history</h2>
-      </div>
-
-      <section class="par" aria-label="Interfaces and beginnings">
-        <div class="voz practica">
-          <p class="rotulo">01</p>
-          <h3>Interfaces</h3>
-          <p>
-            We create interfaces for encounters with the archive. An interface can be digital, performative or
-            developed with a community: a way of navigating films, a score that invites people to respond through
-            movement and sound, a gathering where drawing and conversation bring images into relation with lived
-            experience.
-          </p>
-          <p>
-            These interfaces shape what can happen with the archive. We build and change them as the work develops.
-          </p>
-        </div>
-        <div class="voz historia">
-          <p class="rotulo">2015–2016</p>
-          <h3>BOZAR and erg</h3>
-          <p>
-            The decisive impulse for <em>What_if…</em> came from a screening of footage from Belgian colonial archives
-            at BOZAR in Brussels in 2015, organised with the Cinémathèque Royale de Belgique and the Royal Museum for
-            Central Africa in Tervuren.
-          </p>
-          <p>
-            Anna Seiderer and Alexander Schellow were invited to a panel discussion. The debate became so heated that
-            the screening itself could not take place.
-          </p>
-          <p>
-            This situation made palpable the continuing violence inscribed in the so-called “official” images of
-            Belgian colonial history: a violence that remains active in the present, through verbal and physical
-            conflict and the ongoing reproduction of colonial perspectives.
-          </p>
-          <p>
-            In response, Schellow and Seiderer initiated a workshop at erg—école de recherche graphique in Brussels in
-            2016. The workshop led to the formation of <span class="versalitas">GREYZONE ZEBRA</span>.
-          </p>
-        </div>
-      </section>
-
-      <section class="par" aria-label="Responses and the archive">
-        <div class="voz practica">
-          <p class="rotulo">02</p>
-          <h3>Observation and response</h3>
-          <p>
-            Observation continues through the responses of others. An image acquires different associations when it
-            travels, when someone speaks alongside it, when a body repeats a gesture or a computer assigns an
-            improbable shift.
-          </p>
-          <p>What happens in these encounters becomes material for further work.</p>
-          <figure class="imagen-al-margen">
-            <img
-              src="/imagenes/encuentro-bruselas.webp"
-              alt="An archive image projected across a table and an open book during a workshop."
-              width="1600"
-              height="845"
-              loading="lazy"
-            />
-            <figcaption>Workshop at erg, Brussels · December 2022</figcaption>
-          </figure>
-        </div>
-        <div class="voz historia">
-          <p class="rotulo">2017–2019</p>
-          <h3>Colonial family films</h3>
-          <p>
-            Between 2017 and 2019, <span class="versalitas">GREYZONE ZEBRA</span> searched for colonial family films
-            held in private collections. Digitised in high resolution, the material was gradually brought together in
-            an online archive.
-          </p>
-          <p>
-            Colonial images are not merely remnants of the past. Their visual regimes remain embedded in contemporary
-            cultural, social and perceptual practices, where they are continually reproduced, often unintentionally.
-          </p>
-          <p>
-            Family films are particularly revealing. Unlike official colonial productions, they often lack a coherent
-            ideological structure or a hermetically controlled visual language. Their significance may emerge through
-            the margins of the frame, incidental details, gestures, absences or elements that seem irrelevant at first
-            sight.
-          </p>
-          <p>
-            The films can be “re-animated”: kept accessible to new forms of attention, interpretation and collective
-            analysis, without restoring them to an imagined original meaning.
-          </p>
-          <details class="desplegable">
-            <summary>GREYZONE ZEBRA members</summary>
-            <p>
-              Milena Desse, Sandra Heremans, Maxime Jean-Baptiste, Nelson Makengo, Fred Mutombo, Alexander Schellow,
-              Anna Seiderer and Antje Van Wichelen. The work took the form of an archive, a publication series,
-              performances and workshops.
-            </p>
-          </details>
-        </div>
-      </section>
-
-      <section class="par" aria-label="Friction and archive activations">
-        <div class="voz practica">
-          <p class="rotulo">03</p>
-          <h3>Friction and disagreement</h3>
-          <p>
-            We are interested in the capacity of artistic practice to produce meaning through these crossings,
-            including the friction and disagreement they generate.
-          </p>
-          <p>We embrace the archive’s contradictions and make them visible.</p>
-          <p>We notice frictions and embrace them.</p>
-          <p>We create interfaces that are warm, even if they create a fire.</p>
-        </div>
-        <div class="voz historia">
-          <p class="rotulo">Methodology</p>
-          <h3>Archive activations</h3>
-          <p>
-            From its initial phase, <span class="versalitas">GREYZONE ZEBRA</span> worked with the films through
-            formats extending beyond archival collection and presentation. “Archive Activations” were performative
-            gatherings in which participants took notes during or immediately after screenings, then worked
-            collectively with the resulting material.
-          </p>
-          <p>
-            These notes recorded observations, gestures, associations, memories and stories that emerged through the
-            encounter with the films. Over time, the accumulated records became an independent body of material.
-          </p>
-          <p>
-            Workshops enabled participants to examine these observations in greater depth. Artists and researchers
-            were invited to “process” the films in both senses of the word: technically, through editing,
-            categorisation and transformation; and collectively, through embodied, discursive and performative
-            analysis.
-          </p>
-        </div>
-      </section>
-
-      <section class="par" aria-label="Communities and transcontinental collaboration">
-        <div class="voz practica">
-          <p class="rotulo">04</p>
-          <h3>Archives and communities</h3>
-          <p>
-            We dislocate archives from monumental institutions and return them to communities so they can be
-            activated.
-          </p>
-        </div>
-        <div class="voz historia">
-          <p class="rotulo">Collaborations</p>
-          <h3>Institutional collaborations</h3>
-          <p>
-            Collaboration with African partner institutions has been integral from the beginning: PICHA in Lubumbashi,
-            the University of the Western Cape in Cape Town and the Centre for the Less Good Idea in Johannesburg.
-          </p>
-          <p>
-            This is more than an institutional exchange or an expansion of the archive’s geographical reach. It is a
-            way of questioning the colonial conditions under which images were produced, preserved, circulated and
-            interpreted, and of developing analysis beyond European archival frameworks.
-          </p>
-          <details class="desplegable">
-            <summary>Partner institutions</summary>
-            <p>
-              PICHA, Lubumbashi; University of the Western Cape, Cape Town; Centre for the Less Good Idea,
-              Johannesburg; erg—école de recherche graphique and WIELS, Brussels; CONTOUR Biennale, Mechelen; Khiasma;
-              Université Paris 8; FRArt/FNRS; Universidad de los Andes, Bogotá.
-            </p>
-          </details>
-        </div>
-      </section>
-
-      <section class="par" aria-label="The name and the current research">
-        <div class="voz practica">
-          <p class="rotulo">05</p>
-          <h3>The name</h3>
-          <p>
-            The name combines drawing as an action on the archive, being drawn to it, and drowning as a risk of
-            immersion. The brackets keep these readings present within the same word.
-          </p>
-          <p>Play is part of how we work with that attraction and risk.</p>
-        </div>
-        <div class="voz historia">
-          <p class="rotulo">2020 onwards / What_if…</p>
-          <h3>Classification and interfaces</h3>
-          <p>
-            Since 2020, Juan Camilo González, Alexander Schellow and Anna Seiderer have continued the research through
-            <em>What_if…</em>, independently of the earlier <span class="versalitas">GREYZONE ZEBRA</span> collective,
-            with the sustained support of the EnFlujo Laboratory at Universidad de los Andes in Bogotá.
-          </p>
-          <p>
-            The archive’s classification systems, interfaces and navigation tools actively shape how material can be
-            encountered. Technical decisions are inseparable from questions of content, politics and ethics. The
-            structure of access influences whether an archive is rigid or playful, closed or open to future uses.
-          </p>
-          <p>
-            González works at the intersection of animation and creative programming. Together, we investigate
-            categorisation systems and their playful, critical deconstruction. The technical research has also
-            involved Hugo Idarraga.
-          </p>
-          <details class="desplegable">
-            <summary>Recognition, misdirection and the politics of access</summary>
-            <p>
-              Since 2020, experiments with non-linguistic pattern recognition and artificial intelligence have raised
-              questions about categorisation, automation, dataset construction and the political implications of
-              machine-assisted navigation.
-            </p>
-            <p>
-              Performative play arrangements bring found or intentionally altered deep-learning processes and datasets
-              into resonance with colonial family films. Misplaced, anachronistic or deliberately manipulated patterns
-              expose the assumptions, biases and historical structures embedded in systems of recognition.
-            </p>
-            <p>
-              How might algorithmic processes be interrupted, misdirected or made perceptible? Can machine-learning
-              systems become sites of friction in which categorisation itself is subjected to artistic and political
-              scrutiny?
-            </p>
-            <p>
-              Initial workshops in Brussels, Bogotá and Johannesburg took the form of performative scores, bringing
-              together animation, drawing, music, performance and programming.
-            </p>
-            <p>
-              The project also addresses tensions between open-source models, archival accessibility and the right to
-              one’s own image.
-            </p>
-          </details>
-        </div>
-      </section>
-    </div>
-
-    <section class="proyectos" id="proyectos" aria-labelledby="titulo-proyectos">
-      <div class="cabecera-proyectos">
-        <p class="rotulo">III</p>
-        <h2 id="titulo-proyectos">Projects</h2>
-      </div>
-      <div class="constelacion">
-        {
-          todosProyectos.map(async (proyecto) => {
-            const { Content } = await render(proyecto);
-            return (
-              <TarjetaProyecto
-                id={proyecto.id}
-                orden={proyecto.data.orden}
-                titulo={proyecto.data.titulo}
-                subtitulo={proyecto.data.subtitulo}
-                resumen={proyecto.data.resumen}
-                etiqueta={proyecto.data.etiqueta}
-                imagen={proyecto.data.imagen}
-                altImagen={proyecto.data.altImagen}
-                dimensionesImagen={proyecto.data.dimensionesImagen}
-                creditoImagen={proyecto.data.creditoImagen}
-                esTextual={proyecto.data.esTextual}
-                iconoTexto={proyecto.data.iconoTexto}
-              >
-                <Content />
-              </TarjetaProyecto>
-            );
-          })
-        }
-      </div>
-    </section>
-  </main>
-
-  <footer class="pie">
-    <div>
-      <p class="rotulo">Draw[n]ing</p>
-      <p class="nombres-pie">Anna Seiderer<br />Alexander Schellow<br />Juan Camilo González</p>
-    </div>
-    <a href="#superficie" class="volver">Back to top <span aria-hidden="true">↑</span></a>
-  </footer>
-  <div class="herramientas" hidden>
-    <span class="profundidad" aria-hidden="true"><span id="valor-profundidad">000</span> / 100</span>
-  </div>
-</BaseLayout>
